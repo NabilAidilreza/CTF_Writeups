@@ -147,7 +147,35 @@ CDDC2025{Finally?OMGAfterSomanyPIKKAhints!}
 > 3rd: School name (all lowercase)
 
 **Approach:**  
-❓ *(Still in progress)*
+## 🖼️ Photo Analysis
+
+### 📷 Photo 1: Lecture Hall
+
+- **Observation**: Image captured during a lecture.
+- **Details**: A school logo appears on the presentation slide — a black rectangle with a tiger.
+- **Inference**: The logo matches **Korea University**.
+- **Conclusion**: This photo was taken at `koreauniversity`, in South Korea.
+
+---
+
+### 📷 Photo 2: Storefront in Airport
+
+- **Observation**: Image shows a store with signage referring to **Akihabara**.
+- **Details**: Reverse image search links the store to **Narita Airport**.
+- **Conclusion**: The location is `NARITA`, an international airport in Japan.
+
+---
+
+### 📷 Photo 3: Airplane
+
+- **Observation**: Plane in the image is registered as `D-ALAA`.
+- **Lookup**:
+  - [AirHistory.net](https://www.airhistory.net/marks-all/DALAA)
+  - [ABPic](https://abpic.co.uk/pictures/registration/D-ALAA)
+- **Details**: The aircraft is associated with photos taken at **Munich Airport**.
+- **Conclusion**: The country is `germany`.
+
+---
 
 **Flag:**  
 ```
