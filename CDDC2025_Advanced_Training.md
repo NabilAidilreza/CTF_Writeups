@@ -1,7 +1,7 @@
 
 # CDDC 2025 Training Advanced Challenges
 
-The "harder" challenges... (More fun!)
+The `harder` challenges... (More fun :))
 
 ## Overview
 
