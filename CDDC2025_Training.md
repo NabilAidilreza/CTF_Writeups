@@ -1,4 +1,4 @@
-# CTF_Writeups
+# CDDC 2025 Training Challenges
 
 [10-20 Minute Read] Team NTU/SMU Unzipped
 
