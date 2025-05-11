@@ -85,395 +85,276 @@ THE FLAG
 
 ## [CyberSec-02] Katze
 
-**Challenge**
-Attention please!
-Calling all brainhackers to communicate with below port now!
+**Challenge**  
+Attention please!  
+Calling all brainhackers to communicate with below port now!  
+`52.76.13.43 8085`
 
-52.76.13.43 8085
+**Solution**  
+Connect to given IP:Port using netcat and answer the questions:  
+- SSH => 22  
+- SMTP => 25  
+- HTTPS => 443  
 
-**Solution**
-
-Connect to given ip:addr using netcat
-
-Answer the qns 
-
-SSH => 22
-
-SMTP => 25
-
-HTTPS => 443
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{netcat_challenge_success}
 ```
 
 ## [CyberSec-03] 101
 
-**Challenge**
-What is this?!?!
-
-A random number?
-
+**Challenge**  
+What is this?!?!  
+A random number?  
 Why is it only 1 and 0? How do I read this?
 
-**Solution**
+**Solution**  
+Binary string — convert binary to text using tools like [RapidTables](https://www.rapidtables.com/convert/number/binary-to-ascii.html).
 
-It is a binary string.
-
-Convert binary to text (https://www.rapidtables.com/convert/number/binary-to-ascii.html)
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{hidden_in_binary}
 ```
 
 ## [CyberSec-04] Our secret
 
-**Challenge**
+**Challenge**  
+Check the image and... Kapow!!!
 
-Check the image and...
+**Solution**  
+Use Aperisolve — steghide function detects a hidden flag.txt.
 
-Kapow!!!
-
-**Solution**
-
-Put through Aperisolve
-
-Steghide function detected a flag.txt
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{Kap00vv_congratulations}
 ```
 
 ## [CyberSec-05] Silver dime
 
-**Challenge**
+**Challenge**  
+Bit strange, a zip file huh... I will share some dimes :)
 
-I found something!
+**Solution**  
+Crack ZIP password using tools like [LostMyPass](https://www.lostmypass.com/file-types/zip/) or John the Ripper.
 
-Bit strange, a zip file huh..
-
-Brainhacker, please help me, I will share some dimes :)
-
-**Solution**
-
-Recover zip password (https://www.lostmypass.com/file-types/zip/) OR use john the ripper
-Get flag in the zip file.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{cr4ck3d_m3_fast}
 ```
 
 ## [CyberSec-06] Super calc
 
-**Challenge**
+**Challenge**  
+You need a super calculator to solve this!  
+`nc 52.76.13.43 8084`
 
-You need a super calculator to solve this! 
+**Solution**  
+Use Python socket to parse and solve math questions automatically.
 
-nc 52.76.13.43 8084
-
-**Solution**
-
-Use Python socket to solve the questions.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{5uP3r_p0W3r3d_c4lCuL4t0r}
 ```
 
 ## [LinuxFunds-02] Reversed hidden flag
 
-**Challenge**
+**Challenge**  
+Find the hidden flag fragment and complete the flag!  
+`nc 52.76.13.43 8086`
 
-Find the hidden flag fragment and complete the flag!
+**Solution**  
+Look for `flag.txt` files using `ls -l`, combine contents and reverse the string.
 
-nc 52.76.13.43 8086
-
-**Solution**
-
-Check around for flag with ls -l commands
-
-You will find 3 flag.txt, combine and reverse string for the flag.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{1t_W45_ju5t_h1dd3n}
 ```
-## [LinuxFunds-03] random fruit 
 
-**Challenge**
+## [LinuxFunds-03] random fruit
 
-Look for the flags through the executable!
+**Challenge**  
+Look for the flags through the executable!  
+`nc 52.76.13.43 8087`
 
-nc 52.76.13.43 8087
+**Solution**  
+Use `ls -a`, then `cat fruits`
 
-**Solution**
-
-ls -a
-cat fruits
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{this_is_Random_fruits}
 ```
+
 ## [LinuxFunds-04] Find File
 
-**Challenge**
+**Challenge**  
+Check desktop left in one of Cypher's lookouts.  
+Flag in file with unique type.  
+`nc 52.76.13.43 8088`
 
-We found a desktop left in one of Cypher's lookouts.
+**Solution**  
+Use `ls -al Desktop/*/*`, look for odd file sizes.
 
-On the desktop, there are flag-related files in the 'flag' folder.
-
-One of the files have a different file type.
-
-Can you find what it is?
-
-nc 52.76.13.43 8088
-
-**Solution**
-
-ls -al Desktop/*/* => Spotted a file with different size than the rest
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{Y0u_F1nd_Me56}
 ```
+
 ## [LinuxFunds-05] Unknown Program
 
-**Challenge**
+**Challenge**  
+Desktop has unknown software. Default password seems exposed.  
+`nc 52.76.13.43 8089`
 
-The desktop from Cypher's lookout has an unknown software installed.
+**Solution**  
+Check `/opt` and `/var/identify` for `identify_flag.sh`  
+Look inside `Readme.md`.
 
-Default password of it seems to be exposed.
-
-Can you find it?
-
-nc 52.76.13.43 8089
-
-**Solution**
-
-Concept: /opt is where installed programs usually are
-
-in /opt => Spotted "cat identify_flag.sh" in /var/identify
-
-Navigate to path and find a "Readme.md"
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{W0w_Y0U_F0UnD_1T}
 ```
+
 ## [WindowsFunds-02] fast console flag
 
-**Challenge**
+**Challenge**  
+Run the file and read flag from fast output.
 
-Run the file and check the flag that prints on the console.
+**Solution**  
+Run `.exe` from CMD prompt.
 
-It goes super fast, so you will have to be even faster!
-
-**Solution**
-
-Simply run exe file on cmd prompt to see output.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{pR1nt_4nD_g0}
 ```
+
 ## [WindowsFunds-03] traces
 
-**Challenge**
+**Challenge**  
+Find where user software settings are saved.  
+ZIP password: `reg`
 
-Programs do not print anything, but they leave important information somewhere in the system.
+**Solution**  
+Unzip and run `hidden_reg_flag.exe`
 
-In the Windows system, find the area where the user's software settings are saved!
-
-File's password : reg
-
-**Solution**
-
-Unzip folder to find two exe files.
-Run hidden_reg_flag.exe.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{ReG_hAcK}
 ```
+
 ## [WindowsFunds-04] is it javascript?
 
-**Challenge**
+**Challenge**  
+Cypher hid a flag in this file. Look closer.
 
-Cypher hid a flag value in this file.
+**Solution**  
+It’s JSFuck encoded. Use [dcode.fr/jsfuck-language](https://www.dcode.fr/jsfuck-language).
 
-We might need to look into it.
-
-**Solution**
-
-jsf**k language => https://www.dcode.fr/jsfuck-language
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{YES_1t_1S_JAVA2CR1pt}
 ```
+
 ## [WindowsFunds-05] My Startup Program
 
-**Challenge**
+**Challenge**  
+Find the startup registry key converted to text.
 
-A part of registry file has been converted to a text file.
+**Solution**  
+Search for startup paths in:  
+`HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`
 
-I hear that a startup program is configured.
-
-Do you mind looking for it?
-
-**Solution**
-
-Concept: Whats the reg key for startup files?
-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-Will find a exe with flag name.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{W3ll_d0n3_Y0u_F0un[)_17}
 ```
+
 ## [WindowsFunds-06] animal farm
 
-**Challenge**
+**Challenge**  
+Cypher has lots of animal pictures. One is hiding something.
 
-There is a set of suspicious files.
+**Solution**  
+Use binwalk on large image (e.g., Tiger.png). Aperisolve shows hidden flag.
 
-What is Cypher doing with a bunch of animal pictures?
-
-Let's find a lead (or a flag) in the pictures.
-
-**Solution**
-
-Multiple pngs => Suspiciously huge file => Tiger.png
-
-Aperisolve and found traces of data from binwalk.
-
-Flag found in data.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{aNiMa1_FaRm_S2CrEt}
 ```
+
 ## [WindowsFunds-08] Gentleman's History
 
-**Challenge**
+**Challenge**  
+Find browser history in provided SQLite file.
 
-A wise man once said...
+**Solution**  
+Open file using SQLite browser. Check `urls` table.
 
-"A true gentleman never asks about another man's salary, love life, or browser history."
-
-So, instead of asking, I need you to peek into THIS history. :P
-
-**Solution**
-
-It is a sqlite3 db file.
-Check under "urls" table => Found CDDC website visits
-Flag param found in link.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{d08df2b8de382d42c60e116368c3ee799e00f286}
 ```
+
 ## [WindowsFunds-09] Excel hidden flag
 
-**Challenge**
+**Challenge**  
+Excel file with hidden flag
 
-Cypher hid a flag inside the Excel file!
+**Solution**  
+Rename `.xlsx` to `.zip`, extract and read `sharedStrings.xml`
 
-Find the flag!
-
-**Solution**
-
-Concept: Can change Excel to zip format to see base files
-Flag found in sharedStrings.xml
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{3xcEl_H1dden_fl4g}
 ```
+
 ## [NetworkingFunds-02] F4K3
 
-**Challenge**
+**Challenge**  
+Visual deception — don’t believe what you see.
 
-Cheating the other person's common sense and eyes is also part of security. Don't believe what you see as it is.
+**Solution**  
+Use Wireshark, filter HTTP traffic, flag in URL.
 
-**Solution**
-
-Use Wireshark for pcap analysis.
-Filter HTTP => Flag in url
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{Sometimes_what_you_see_may_not_be_all_that_you_see}
 ```
+
 ## [NetworkingFunds-03] HTTP
 
-**Challenge**
+**Challenge**  
+Credentials sent via HTTP.
 
-Destination tried to log in from a web page using HTTP. Find your ID and password and get the flag
+**Solution**  
+Wireshark => Filter `http`, look for `login.php`, follow TCP stream.
 
-**Solution**
-
-Filter by HTTP => login.php found
-Follow TCP Stream => Details found
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{I_use_a_password_of_more_than_10_digits!}
 ```
+
 ## [NetworkingFunds-04] ICMP
 
-**Challenge**
+**Challenge**  
+ICMP is awesome!
 
-ICMP is such a great protocol
+**Solution**  
+Filter `icmp` in Wireshark, follow stream for flag in payload.
 
-**Solution**
-
-Filter by ICMP
-Follow stream to see raw data being transmitted.
-Form the flag.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{I_Love_ICMP}
 ```
+
 ## [NetworkingFunds-05] TELNET
 
-**Challenge**
+**Challenge**  
+Telnet is super vulnerable.
 
-Telnet is very, very, very vulnerable
+**Solution**  
+Filter `telnet` in Wireshark, follow stream — flag in plaintext.
 
-**Solution**
-
-Filter by Telnet
-Follow stream
-Flag found in conversation.
-
-**Flag**
-
+**Flag**  
 ```
 CDDC2025{Use_SSH_Instead_Of_Telnet}
 ```
