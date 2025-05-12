@@ -15,7 +15,18 @@ Challenge                                     Category       Flag
 [OSINT-07] WHOISTHISPOKEMON                   Advanced       CDDC2025{Finally?OMGAfterSomanyPIKKAhints!}
 [OSINT-08] WHERETHEHACKAMI                    Advanced       CDDC2025{H0wd1dy0uKn0wwwh3r3iWAS}
 [OSINT-09] GOld Chain                         Advanced       CDDC2025{transparency_immutable_decentralized}
+
+[NETWORK-02] WHOLOGIN                         Advanced       CDDC2025{DIDyouseeWHOwasLOGINGIN?}
+[NETWORK-03] PROTOCOL                         Advanced       CDDC2025{SorryitwasntFTPSORRY!}
+[NETWORK-04] WhatsTHEPASS                     Advanced       CDDC2025{passwordiskisapasswordddddddddddd}
+[NETWORK-05] CaptureTHE_FLAG                  Advanced       CDDC2025{HTTPIISVVERY_GOOD}
+[NETWORK-06] MSGFromSRC                       Advanced       CDDC2025{NetworkHEXplay}
+[NETWORK-07] WHOISINBETWEEN                   Advanced       CDDC2025{00:0c:29:ea:61:40}
+[NETWORK-08] DR0N3CAM                         Advanced       CDDC2025{YOU_JUST_HACKED_CAM_DRONE_GOOD}
+[NETWORK-09] EyeUs33300Plus2600               Advanced       CDDC2025{vict0ry}
 ```
+
+# OSINT
 
 ## 🧠 [OSINT-02] declassified
 
@@ -202,5 +213,141 @@ CDDC2025{H0wd1dy0uKn0wwwh3r3iWAS}
 **Flag:**  
 ```
 CDDC2025{transparency_immutable_decentralized}
+```
+
+# NETWORK SECURITY
+
+##  [NETWORK-02] WHOLOGIN
+
+**Challenge:**  
+> MR WHO says: WHO AM I?
+
+**Approach:**  
+- Filter FTP
+- Follow stream
+- Found `uname` and `pass`
+
+**Flag:**  
+```
+CDDC2025{DIDyouseeWHOwasLOGINGIN?}
+```
+
+##  [NETWORK-03] PROTOCOL
+
+**Challenge:**  
+> Based on the description, can you figure out the associated IP address?
+
+**Approach:**  
+- Open with Wireshark
+- Check overall file characteristics with conversation
+- IPV4 => `8.8.8.8`
+
+**Flag:**  
+```
+CDDC2025{DIDyouseeWHOwasLOGINGIN?}
+```
+
+##  [NETWORK-04] WhatsTHEPASS
+
+**Challenge:**  
+> A communication channel using a certain protocol has just opened, and I used it to log in. I believe that this protocol is secure and won't leak my credentials. Right? 
+
+**Approach:**  
+- Riddle answer: telnet
+- Telnet works on port `23`
+- Filter with `tcp.port == 23`
+- Follow stream to see credentials
+
+**Flag:**  
+```
+CDDC2025{passwordiskisapasswordddddddddddd}
+```
+
+##  [NETWORK-05] CaptureTHE_Flag
+
+**Challenge:**  
+> A certain protocol lets an attacker read a message between two entities, thereby allowing MITM attacks. Can you take advantage of that and get the flag?
+
+**Approach:**  
+- Riddle answer: hypertexttransferprotocol
+- Filter HTTP
+- Flag is in HTTP Url
+
+**Flag:**  
+```
+CDDC2025{HTTPIISVVERY_GOOD}
+```
+
+##  [NETWORK-06] MSGFromSRC
+
+**Challenge:**  
+> A number of messages are coming from a certain address. Someone commented about something perculiar in one of the messages... What is it? Maybe it contains the flag?
+
+**Approach:**  
+- Riddle answer: 162.159.136.234
+- Mention of a comment in the messages
+- Apply filter with `frame.comment`
+- One packet pops out with a comment
+- Follow the comment, which was a Google Search link
+
+**Flag:**  
+```
+CDDC2025{NetworkHEXplay}
+```
+
+##  [NETWORK-07] WHOISINBETWEEN
+
+**Challenge:**  
+> An attack that lets an attacker intercept the communication between computers had just happened. Can you find out who is involved in this attack?
+
+**Approach:**  
+- Riddle answer: maninthemiddle
+- Wireshark => Conversations
+- To view all possible MACs
+- Realise one MAC addr has an abnormal file transfer rate
+
+**Flag:**  
+```
+CDDC2025{00:0c:29:ea:61:40}
+```
+
+##  [NETWORK-08] DR0N3CAM
+
+**Challenge:**  
+> Using a certain protocol, a drone was able to stream images through the network.
+
+**Approach:**  
+- Riddle answer: realtimestreamingprotocol
+- Given a pcap file and a drone.apk (A drone app)
+- File characteristics shows WiFi (802.11) traffic and UDP traffic with data
+- RSTP clue leads to RTP (which is UDP in this case)
+- Analysis of data shows signs of JFIF
+- Since we know its a video of sorts, it must be a MJPEG stream (Motion JPEG video type)
+- Use `tshark` to collect data
+- `tshark -r file.pcap -Y "udp.port == 53508" -T fields -e data > mjpeg.hex`
+- `xxd -r -p mjpeg.hex mjpeg_stream.bin`
+- Use Python to reassemble each JPEG instance
+- Finally use `ffmpeg` command to push together the video
+- `ffmpeg -framerate 15 -i frame_%04d.jpg -c:v libx264 -pix_fmt yuv420p output.mp4`
+
+**Flag:**  
+```
+CDDC2025{YOU_JUST_HACKED_CAM_DRONE_GOOD}
+```
+
+##  [NETWORK-09] EyeUs33300Plus2600
+
+**Challenge:**  
+> What is my password?
+
+**Approach:**  
+- Riddle answer: virtualnetworkcomputing
+- Given => `B3fc1fa2cc94950d `
+- This is a VNC password
+- https://github.com/billchaison/VNCDecrypt
+
+**Flag:**  
+```
+CDDC2025{vict0ry}
 ```
 
