@@ -2,7 +2,7 @@
 
 [10-20 Minute Read] Team NTU/SMU Unzipped
 
-Team Members: Stickybit, ByteMe, ...
+Team Members: Stickybit, ByteMe, fazli1702, Bonk
 
 CTF Hosted by dsta.gov.sg/CDDC (https://www.dsta.gov.sg/brainhack)
 
